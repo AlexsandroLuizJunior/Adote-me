@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+/*HEADER*/
+navbar-custom {
+    background-color: #ffffff; /* coloque a cor que quiser */
+}
+
+.navbar-nav {
+    gap: 30px; /* altere o valor como quiser */
+}
+
+/* Muda a cor dos links */
+.navbar-nav .nav-link {
+    color: #000 !important;   /* ALTERE AQUI */
+}
+
+/* Cor ao passar o mouse */
+.navbar-nav .nav-link:hover {
+    color: #575151 !important;  /* ALTERE AQUI */
+}
+
+/* Fonte apenas no navbar */
+.navbar-nav .nav-link {
+    font-family: "Alexandria", sans-serif;
+    font-weight: 500; /* ajuste se quiser */
+}
+
+/* --- FOOTER --- */
+.footer-dev {
+    background-color: #5a2d2c;
+    padding: 60px 80px;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* importante */
+    gap: 120px;
+}
+/*HEADER FIM*/
+
+/* Botão X no canto */
+.btn-close-card {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    width: 28px;
+    height: 28px;
+
+    background-color: #e74c3c; /* vermelho igual ao Figma */
+    border: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-close-card img {
+    width: 14px;
+    height: 14px;
+    filter: invert(100%); /* deixa branco */
+}
+
+.photo-card {
+    background-color: #c4c4c4;
+    border-radius: 10px;
+    width: 100%;
+    overflow: hidden;
+    position: relative; /* obrigatório para o X ficar preso ao card */
+}
+
+.photo-card.large {
+    height: 220px;
+}
+
+.photo-card.small {
+    height: 180px;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ÁREA DE UPLOAD */
+.upload-box {
+    background-color: #f1f1f1;
+    padding: 50px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    margin-top: 40px; /* 🔥 AQUI CRIA O ESPAÇO IGUAL AO FIGMA */
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.upload-icon {
+    width: 55px;
+    opacity: 0.9;
+}
+
+.upload-box p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+/* Esconde o input de arquivo */
+#fileUpload {
+    display: none;
+}
+
+/* Botão ATUALIZAR */
+.btn-atualizar {
+    background-color: #C68747;
+    color: white;
+    border: none;
+    padding: 10px 32px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s;
+    margin-bottom: 20px; /* 🔥 Deixa igual ao Figma */
+}
+
+.btn-atualizar:hover {
+    opacity: 0.85;
+}
+
+
+.page-card {
+    border-radius: 23px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 0px #d7d7d7,
+                -5px -5px 0px #e9e9e9;
+
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto; /* centraliza */
+    padding: 40px;
+}
+
+
+/*FOOTER*/
+.dev-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    text-align: center;
+}
+
+.dev-title {
+    margin-bottom: 35px; 
+    font-size: 26px;
+    font-family: "Staatliches", sans-serif;
+}
+
+.dev-info p {
+    margin: 100px 100;
+    font-family: "Staatliches", sans-serif;
+    font-size: 20px;
+}
+
+.dev-info a {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    font-family: "Staatliches", sans-serif;
+}
+
+.logo-footer {
+    display: flex;
+    align-items: center;
+    gap: 40px; 
+}
+
+.logo-footer img {
+    width: 240px;
+}
+
+.nav-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.nav-footer .nav-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-footer .nav-link:hover {
+    opacity: 0.8;
+}
+
+.dev-info {
+    font-family: "Staatliches", sans-serif;
+    margin-top: 30px;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.dev-title {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.dev-info a {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+}
+/* --- FOOTER FIM --- */

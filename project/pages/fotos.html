@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/fotos.css">
+    <title>Postar</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="page-card my-5 p-4">
+        <div class="card-wrapper">
+            <div class="container my-5">
+
+                <!-- GRID DE FOTOS -->
+                <div class="row g-3">
+
+                    <!-- Foto grande 1 -->
+                    <div class="col-md-6">
+                        <div class="photo-card large" id="photo-1">
+                            <button class="btn-close-card">
+                                <img src="../assets/svgs/x.svg" alt="Excluir">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Foto grande 2 -->
+                    <div class="col-md-6">
+                        <div class="photo-card large" id="photo-2">
+                            <button class="btn-close-card">
+                                <img src="../assets/svgs/x.svg" alt="Excluir">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Foto pequena 1 -->
+                    <div class="col-md-4">
+                        <div class="photo-card small" id="photo-3">
+                            <button class="btn-close-card">
+                                <img src="../assets/svgs/x.svg" alt="Excluir">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Foto pequena 2 -->
+                    <div class="col-md-4">
+                        <div class="photo-card small" id="photo-4">
+                            <button class="btn-close-card">
+                                <img src="../assets/svgs/x.svg" alt="Excluir">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Foto pequena 3 -->
+                    <div class="col-md-4">
+                        <div class="photo-card small" id="photo-5">
+                            <button class="btn-close-card">
+                                <img src="../assets/svgs/x.svg" alt="Excluir">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upload-box text-center">
+                    <label for="fileUpload" class="upload-label">
+                        <img src="../assets/svgs/cloud-upload-svgrepo-com.svg" alt="Upload" class="upload-icon">
+                        <p>Faça o upload das suas fotos</p>
+                    </label>
+
+                    <input type="file" id="fileUpload" accept="image/*" multiple>
+                </div>
+
+                <div class="text-end mt-4">
+                    <button class="btn-atualizar">ATUALIZAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/footer.js"></script>
+</body>
+
+</html>
