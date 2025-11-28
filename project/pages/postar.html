@@ -97,29 +97,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-    <!-- IMPORT HEADER E FOOTER -->
-    <script>
-        fetch("../components/header.html")
-            .then(res => res.text())
-            .then(data => document.getElementById("header").innerHTML = data);
-
-        fetch("../components/footer.html")
-            .then(res => res.text())
-            .then(data => document.getElementById("footer").innerHTML = data);
-
-        document.querySelectorAll('.btn-option').forEach(btn => {
-            btn.addEventListener('click', () => {
-
-                // Remove ativo dos botões irmãos dentro do mesmo grupo
-                const parent = btn.parentElement;
-                parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('ativo'));
-
-                // Ativa somente o botão clicado
-                btn.classList.add('ativo');
-            });
-        });
-    </script>
-
+    <script src="../assets/js/global.js"></script>
 </body>
 
 </html>
