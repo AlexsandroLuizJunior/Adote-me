@@ -12,29 +12,31 @@
 </head>
 
 <body>
-    <div id="header"></div>
 
     <div class="cad-container">
         <div class="cad-card">
             <h2 class="cad-title">Cadastro</h2>
 
-            <form>
+            <form id="formCadastro">
 
                 <!-- NOME -->
                 <label>Nome:</label>
-                <input type="text" class="form-control login-input">
+                <input type="text" id="nome" class="form-control login-input" required>
 
                 <!-- EMAIL -->
                 <label>Email:</label>
-                <input type="email" class="form-control login-input">
+                <input type="email" id="email" class="form-control login-input" required>
 
                 <!-- SENHA -->
                 <label>Senha:</label>
-                <input type="password" class="form-control login-input">
+                <input type="password" id="senha" class="form-control login-input" required>
 
                 <!-- TELEFONE -->
                 <label>Telefone:</label>
-                <input type="text" class="form-control login-input">
+                <input type="text" id="telefone" class="form-control login-input" required>
+
+                <!-- TIPO (Opcional: você escolhe admin ou comum) -->
+                <input type="hidden" id="tipo" value="comum">
 
                 <p class="signup-text">
                     Já é cadastrado? Faça o <a href="login.html">login</a>
@@ -45,7 +47,7 @@
         </div>
     </div>
 
-    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/cadastro.js"></script>
 </body>
 
 </html>

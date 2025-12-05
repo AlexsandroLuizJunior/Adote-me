@@ -98,6 +98,44 @@
         crossorigin="anonymous"></script>
 
     <script src="../assets/js/global.js"></script>
+
+    <script>
+        document.querySelectorAll(".uploadForm").forEach(form => {
+
+            form.addEventListener("submit", async function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(this);
+                const target = this.dataset.target; // ex: "#photo-1"
+                const card = document.querySelector(target);
+
+                try {
+                    const response = await fetch("uploadFoto.php", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // coloca a foto no card
+                        card.style.backgroundImage = `url('${result.url}')`;
+                        card.style.backgroundSize = "cover";
+                        card.style.backgroundPosition = "center";
+
+                        alert("Foto enviada com sucesso!");
+                    } else {
+                        alert("Erro: " + result.error);
+                    }
+
+                } catch (error) {
+                    console.error("Erro no upload:", error);
+                }
+            });
+
+        });
+
+    </script>
 </body>
 
 </html>
