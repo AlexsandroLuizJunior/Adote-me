@@ -1,0 +1,45 @@
+
+.perfil-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+    padding: 0 60px;
+}
+
+
+.perfil-card {
+    background-color: #6A2E2E; 
+    color: white;
+    padding: 40px;
+    width: 45%;
+    border-radius: 30px;
+}
+
+.perfil-nome {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.perfil-info {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+
+.perfil-btn {
+    background-color: #C7924A; 
+    color: white;
+    font-weight: bold;
+    padding: 12px 30px;
+    border-radius: 12px;
+    border: none;
+    margin-top: 20px;
+}
+
+.perfil-dog {
+    width: 340px;
+    height: auto;
+    margin-right: 30px;
+}
