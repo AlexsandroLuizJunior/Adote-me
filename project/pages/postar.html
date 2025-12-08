@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon/logo.ico">
+    <link rel="stylesheet" href="../assets/css/home.css">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,132 +21,119 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="../assets/favicon/logo.ico">
     <link rel="stylesheet" href="../assets/css/postar.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    
     <title>Postar</title>
 </head>
 
 <body>
     <div id="header"></div>
 
-    <div class="card-wrapper">
-        <div class="container my-5">
+    <div class="container-postar">
 
-            <!-- GRID DE FOTOS -->
-            <div class="row g-3">
+        <div class="row g-3">
 
-                <!-- Foto grande 1 -->
-                <div class="col-md-6">
-                    <div class="photo-card large" id="photo-1"></div>
-                </div>
-
-                <!-- Foto grande 2 -->
-                <div class="col-md-6">
-                    <div class="photo-card large" id="photo-2"></div>
-                </div>
-
-                <!-- Foto pequena 1 -->
-                <div class="col-md-4">
-                    <div class="photo-card small" id="photo-3"></div>
-                </div>
-
-                <!-- Foto pequena 2 -->
-                <div class="col-md-4">
-                    <div class="photo-card small" id="photo-4"></div>
-                </div>
-
-                <!-- Foto pequena 3 -->
-                <div class="col-md-4">
-                    <div class="photo-card small" id="photo-5"></div>
-                </div>
-
+            <div class="col-md-6">
+                <label class="photo-card large">
+                    <input type="file" accept="image/*" class="inputfoto" data-id="0">
+                    <img id="preview-0">
+                </label>
             </div>
 
-            <!-- SEXO + PORTE -->
-            <div class="row text-center mt-4">
-
-                <!-- SEXO -->
-                <div class="col-md-6 sexo-porte-group">
-                    <p class="titulo-campo"><strong>SEXO:</strong></p>
-                    <button class="btn-option">Macho</button>
-                    <button class="btn-option">Fêmea</button>
-                </div>
-
-                <!-- PORTE -->
-                <div class="col-md-6 sexo-porte-group">
-                    <p class="titulo-campo"><strong>PORTE:</strong></p>
-                    <button class="btn-option">Pequeno</button>
-                    <button class="btn-option">Médio</button>
-                    <button class="btn-option">Grande</button>
-                </div>
-
+            <div class="col-md-6">
+                <label class="photo-card large">
+                    <input type="file" accept="image/*" class="inputfoto" data-id="1">
+                    <img id="preview-1">
+                </label>
             </div>
 
-            <div class="mt-4">
-                <label for="nome" class="form-label"><strong>Nome:</strong></label>
-                <input type="text" class="input-custom" id="nome" name="nome" placeholder="Digite o nome do cachorro">
+            <div class="col-md-4">
+                <label class="photo-card small">
+                    <input type="file" accept="image/*" class="inputfoto" data-id="2">
+                    <img id="preview-2">
+                </label>
             </div>
 
-            <!-- DESCRIÇÃO -->
-            <div class="mt-4">
-                <label class="form-label"><strong>Descrição:</strong></label>
-                <textarea class="textarea-custom" id="descricao" placeholder="Digite a descrição do cachorro"></textarea>
+            <div class="col-md-4">
+                <label class="photo-card small">
+                    <input type="file" accept="image/*" class="inputfoto" data-id="3">
+                    <img id="preview-3">
+                </label>
             </div>
 
-            <!-- BOTÕES -->
-            <div class="d-flex justify-content-between mt-5">
-                <a href="fotos.html" class="btn-fotos">FOTOS</a>
-                <button class="btn-atualizar">ATUALIZAR</button>
+            <div class="col-md-4">
+                <label class="photo-card small">
+                    <input type="file" accept="image/*" class="inputfoto" data-id="4">
+                    <img id="preview-4">
+                </label>
             </div>
-
         </div>
+      
+        <input type="file" id="fileInput" accept="image/*" hidden>
+
+        <div class="d-flex">
+                    <!-- SEXO -->
+        <div class="grupo w-50">
+            <p class="fw-bolder">SEXO:</p>
+            <button class="btn-option" data-sexo="M">Macho</button>
+            <button class="btn-option" data-sexo="F">Fêmea</button>
+        </div>
+
+        <!-- PORTE -->
+        <div class="grupo w-50">
+            <p class="fw-bolder">PORTE:</p>
+            <button class="btn-option" data-porte="Pequeno">Pequeno</button>
+            <button class="btn-option" data-porte="Médio">Médio</button>
+            <button class="btn-option" data-porte="Grande">Grande</button>
+        </div>
+        </div>
+
+
+        <label><b>Idade:</b></label>
+    <input type="number" id="idade" class="input" min="0">
+
+        <label><b>Nome:</b></label>
+        <input type="text" id="nome" class="input">
+
+        <label><b>Descrição:</b></label>
+        <textarea id="descricao" class="textarea"></textarea>
+
+        <button id="btnSalvar" class="btn-salvar">ATUALIZAR</button>
+
     </div>
+
 
     <!-- FOOTER DINÂMICO -->
     <div id="footer"></div>
-
-    <!-- JS BOOTSTRAP -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-
-    <script src="../assets/js/global.js"></script>
-
+    <script src="../assets/js/postar.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/footer.js"></script>
     <script>
-        document.querySelectorAll(".uploadForm").forEach(form => {
+        document.querySelectorAll('.inputfoto').forEach(input => {
 
-            form.addEventListener("submit", async function(e) {
-                e.preventDefault();
+            input.addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                const id = event.target.dataset.id;
+                const preview = document.getElementById('preview-' + id);
 
-                const formData = new FormData(this);
-                const target = this.dataset.target; // ex: "#photo-1"
-                const card = document.querySelector(target);
+                if (file) {
+                    const reader = new FileReader();
 
-                try {
-                    const response = await fetch("uploadFoto.php", {
-                        method: "POST",
-                        body: formData
-                    });
+                    reader.onload = function (e) {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                    };
 
-                    const result = await response.json();
-
-                    if (result.success) {
-                        // coloca a foto no card
-                        card.style.backgroundImage = `url('${result.url}')`;
-                        card.style.backgroundSize = "cover";
-                        card.style.backgroundPosition = "center";
-
-                        alert("Foto enviada com sucesso!");
-                    } else {
-                        alert("Erro: " + result.error);
-                    }
-
-                } catch (error) {
-                    console.error("Erro no upload:", error);
+                    reader.readAsDataURL(file);
                 }
             });
 
         });
-
     </script>
+
+
 </body>
 
 </html>

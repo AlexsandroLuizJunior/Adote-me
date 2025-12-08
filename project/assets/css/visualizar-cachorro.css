@@ -351,4 +351,34 @@ navbar-custom {
     font-weight: bold;
     text-decoration: underline;
 }
-/* --- FOOTER FIM --- */
+
+/* FOTO PRINCIPAL */
+.foto-principal {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    object-fit: cover;
+    background-color: #e7e7e7;
+}
+
+/* MINIATURES */
+.foto-thumb {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    background-color: #e7e7e7;
+}
+
+/* escondendo colunas vazias */
+.hidden-photo-col {
+    display: none !important;
+}
+
+/* Modal */
+#modalImage {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 10px;
+}

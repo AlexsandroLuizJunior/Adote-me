@@ -1,45 +1,81 @@
-
+/* Container principal */
 .perfil-container {
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+}
+
+/* Card do usuário */
+.perfil-card {
+    background-color: #6A2E2E;
+    color: white;
+    padding: 45px;
+    width: 50%;
+    border-radius: 35px;
+    box-shadow: 0 8px 18px #00000025;
+}
+
+/* Título */
+.perfil-nome {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+/* Texto de informações */
+.perfil-info {
+    font-size: 18px;
+    margin: 6px 0;
+    opacity: 0.9;
+}
+
+/* Botão atualizar */
+.perfil-btn {
+    background-color: #C7924A;
+    color: white;
+    font-weight: bold;
+    padding: 12px 40px;
+    border-radius: 12px;
+    border: none;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+/* Imagem do cachorro */
+.perfil-dog {
+    width: 400px;
+    height: auto;
+    transform: translateY(20px); /* desce a imagem igual à do layout */
+    margin-left: -30px; /* aproxima do card */
+}
+
+/* Segundo card */
+.perfil-container-2 {
+    margin-top: 20px;
+    padding: 0 80px;
+}
+
+.card-anuncio {
+    width: 100%;
+}
+
+/* Footer do segundo card */
+.adocao-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 60px;
-    padding: 0 60px;
+    margin-top: 25px;
 }
 
-
-.perfil-card {
-    background-color: #6A2E2E; 
+.verificar-btn {
+    background-color: #C7924A;
+    padding: 12px 35px;
     color: white;
-    padding: 40px;
-    width: 45%;
-    border-radius: 30px;
-}
-
-.perfil-nome {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.perfil-info {
-    font-size: 18px;
-    margin: 5px 0;
-}
-
-
-.perfil-btn {
-    background-color: #C7924A; 
-    color: white;
-    font-weight: bold;
-    padding: 12px 30px;
-    border-radius: 12px;
     border: none;
-    margin-top: 20px;
-}
-
-.perfil-dog {
-    width: 340px;
-    height: auto;
-    margin-right: 30px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 18px;
 }

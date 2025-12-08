@@ -1,0 +1,47 @@
+.interessados-container {
+    margin-top: 60px;
+    padding: 0 80px;
+}
+
+.titulo {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lista-interessados {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* CARD */
+.interessado-card {
+    background-color: #F5F5F5;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px #00000020;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Textos do lado esquerdo */
+.interessado-info h3 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.interessado-info p {
+    margin: 4px 0;
+}
+
+/* Lado direito */
+.interessado-contato {
+    text-align: right;
+}
+
+.interessado-contato p {
+    margin: 3px 0;
+}
