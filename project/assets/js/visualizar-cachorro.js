@@ -1,117 +1,171 @@
-// Pega o ID via query string
+// ===========================================================
+// PEGAR ID DO CACHORRO PELA URL
+// ===========================================================
 const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+const idCao = params.get("id");
 
-// Buscar dados do cachorro
-fetch("../assets/data/cachorros.json")
-    .then(res => res.json())
-    .then(lista => {
+// ===========================================================
+// PEGAR ID DO USUÁRIO DO CACHE (localStorage)
+// ===========================================================
+function getUsuarioLogado() {
+    const usuario = localStorage.getItem("usuario");
+    if (!usuario) return null;
 
-        const cachorro = lista.find(item => item.id == id);
+    try {
+        return JSON.parse(usuario);
+    } catch {
+        return null;
+    }
+}
 
-        if (!cachorro) {
+// ===========================================================
+// CARREGAR CACHORRO
+// ===========================================================
+async function carregarCachorro() {
+    try {
+        const req = await fetch(`http://localhost/apicaes/api.php?url=api/caes/${idCao}`);
+        const resposta = await req.json();
+
+        if (resposta.erro || !resposta.dados) {
             alert("Cachorro não encontrado!");
             return;
         }
 
-        // Atualiza grid de fotos (AGORA COM CAMINHO COMPLETO)
-        atualizarGridDeFotos(cachorro);
+        const cao = resposta.dados;
 
-        // Preencher infos
-        document.querySelector(".sexo-porte-group:nth-child(1) .valor-campo").textContent = cachorro.sexo;
-        document.querySelector(".sexo-porte-group:nth-child(2) .valor-campo").textContent = cachorro.porte;
-        document.querySelector(".form-label strong").nextSibling.textContent = " " + cachorro.nome;
+        // Preenche infos
+        document.getElementById("nome").textContent = cao.nome;
+        document.getElementById("sexo").textContent =
+            cao.sexo === "M" ? "Macho" :
+                cao.sexo === "F" ? "Fêmea" : "Não informado";
 
-        // Preencher descrição
-        document.querySelector(".descricao-box").textContent = cachorro.descricao;
+        document.getElementById("porte").textContent = cao.porte;
+        document.getElementById("descricao").textContent = cao.descricao;
 
-        // Prepara modal apenas com fotos existentes
-        prepararModal();
+        carregarFotos(cao.fotos);
+        configurarModal();
 
-        // BOTÃO DE ADOTAR
-        const botaoAdotar = document.getElementById("btnAdotar");
+        // Botão ADOTAR
+        document.getElementById("btnAdotar").addEventListener("click", () => registrarAdocao(cao));
 
-        botaoAdotar.addEventListener("click", () => {
-            if (!cachorro.emailDono) {
-                alert("Este anunciante não deixou um e-mail para contato.");
-                return;
-            }
+    } catch (e) {
+        console.error("Erro:", e);
+        alert("Erro ao carregar cachorro.");
+    }
+}
 
-            window.location.href = `mailto:${cachorro.emailDono}?subject=Quero%20adotar%20o%20${cachorro.nome}`;
+carregarCachorro();
+
+
+// ===========================================================
+// REGISTRAR ADOÇÃO
+// ===========================================================
+async function registrarAdocao(cao) {
+    const usuario = getUsuarioLogado();
+
+    if (!usuario) {
+        alert("Você precisa estar logado para adotar!");
+        return;
+    }
+
+    const dados = {
+        id_usuario: usuario.id,
+        id_cao: cao.id,
+        data_adocao: new Date().toISOString().split("T")[0],
+        descricao: `Adoção do cão ${cao.nome}`
+    };
+
+    try {
+        const req = await fetch("http://localhost/apicaes/api.php?url=api/adocoes", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dados)
         });
-    });
+
+        const resposta = await req.json();
+
+        if (resposta.erro) {
+            alert(resposta.mensagem || "Erro ao registrar adoção.");
+            return;
+        }
+
+        alert("Adoção registrada com sucesso!");
+        console.log(resposta);
+
+    } catch (e) {
+        console.error("Erro ao registrar adoção:", e);
+        alert("Erro ao registrar adoção.");
+    }
+}
 
 
-// ------------------- MODAL DE IMAGENS -------------------
-let imagensDoCachorro = [];
+// ===========================================================
+// FOTOS
+// ===========================================================
+function carregarFotos(fotos) {
+    for (let i = 1; i <= 5; i++) {
+        const img = document.getElementById(`photo-${i}`);
+        const col = img.parentElement;
+
+        if (!fotos[i - 1]) {
+            col.classList.add("hidden-photo-col");
+        } else {
+            col.classList.remove("hidden-photo-col");
+            img.src = fotos[i - 1];
+        }
+    }
+}
+
+// ===========================================================
+// MODAL
+// ===========================================================
+let imagens = [];
 let indiceAtual = 0;
 
-function prepararModal() {
-    imagensDoCachorro = [];
+function configurarModal() {
+    imagens = [];
 
-    const imgs = document.querySelectorAll(".foto-cachorro");
+    const todas = document.querySelectorAll(".foto-cachorro");
 
-    imgs.forEach((img) => {
-        const src = img.src;
+    todas.forEach(img => {
+        if (img.src && img.src.trim() !== "") {
+            imagens.push(img.src);
 
-        if (!src || src.trim() === "") return; // ignora imagens vazias
-
-        imagensDoCachorro.push(src);
-
-        img.addEventListener("click", () => {
-            abrirModal(imagensDoCachorro.indexOf(src));
-        });
+            img.addEventListener("click", () => {
+                abrirModal(imagens.indexOf(img.src));
+            });
+        }
     });
 }
 
 function abrirModal(index) {
     indiceAtual = index;
+
     const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
+    const modalImage = document.getElementById("modalImage");
 
     modal.style.display = "flex";
-    modalImg.src = imagensDoCachorro[indiceAtual];
+    modalImage.src = imagens[indiceAtual];
 }
 
 function fecharModal() {
     document.getElementById("imageModal").style.display = "none";
 }
 
-function imagemAnterior() {
-    indiceAtual = (indiceAtual - 1 + imagensDoCachorro.length) % imagensDoCachorro.length;
-    document.getElementById("modalImage").src = imagensDoCachorro[indiceAtual];
+function anterior() {
+    indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length;
+    document.getElementById("modalImage").src = imagens[indiceAtual];
 }
 
-function proximaImagem() {
-    indiceAtual = (indiceAtual + 1) % imagensDoCachorro.length;
-    document.getElementById("modalImage").src = imagensDoCachorro[indiceAtual];
+function proxima() {
+    indiceAtual = (indiceAtual + 1) % imagens.length;
+    document.getElementById("modalImage").src = imagens[indiceAtual];
 }
 
 document.querySelector(".close-modal").addEventListener("click", fecharModal);
-document.querySelector(".left-arrow").addEventListener("click", imagemAnterior);
-document.querySelector(".right-arrow").addEventListener("click", proximaImagem);
+document.querySelector(".left-arrow").addEventListener("click", anterior);
+document.querySelector(".right-arrow").addEventListener("click", proxima);
 
 document.getElementById("imageModal").addEventListener("click", (e) => {
-    if (e.target.id === "imageModal") {
-        fecharModal();
-    }
+    if (e.target.id === "imageModal") fecharModal();
 });
-
-
-// --------------------------------------------------------------
-// ESCONDER CARDS SEM IMAGEM (CORRIGIDO E INCLUINDO PASTA)
-// --------------------------------------------------------------
-function atualizarGridDeFotos(cachorro) {
-
-    for (let i = 1; i <= 5; i++) {
-        const card = document.getElementById(`photo-${i}`);
-        const coluna = card.parentElement;
-
-        if (!cachorro.fotos[i - 1]) {
-            coluna.style.display = "none";
-        } else {
-            coluna.style.display = "";
-            card.src = `../assets/imgs/${cachorro.pasta}/${cachorro.fotos[i - 1]}`;
-        }
-    }
-}

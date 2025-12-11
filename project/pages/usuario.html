@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon/logo.ico">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/usuario.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <title>Postar</title>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container perfil-container">
+        <div class="perfil-card card-usuario">
+            <h2 id="user-nome" class="perfil-nome">NOME DO USUÁRIO</h2>
+
+            <p class="perfil-info">telefone: <span id="user-telefone"></span></p>
+            <p class="perfil-info">email: <span id="user-email"></span></p>
+
+            <a id="btn-atualizar" href="atualizar-dados.html" class="btn perfil-btn">Atualizar</a>
+        </div>
+
+        <img class="perfil-dog" src="../assets/imgs/bg-cão.png" alt="dog">
+    </div>
+
+    <div class="container perfil-container-2">
+        <div class="perfil-card card-anuncio">
+            <h2 class="perfil-nome">QUEM QUER ADOTAR MEU CACHORRO?</h2>
+
+            <div class="adocao-footer">
+                <span id="quantidade">100</span>
+                <a class="btn verificar-btn" href="./adcoes-usuario.html">Verificar</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div> 
+    
+<script src="../assets/js/header.js"></script>
+<script src="../assets/js/footer.js"></script>
+
+<script>
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuario"));
+    if (!usuarioLogado) {
+        window.location.href = "login.html";
+    }
+</script>
+
+<script src="../assets/js/usuario.js"></script>
+
+</body>
+
+
+
+</html>
